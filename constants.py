@@ -1,0 +1,2 @@
+INBOUND = 0
+OUTBOUND = 1
