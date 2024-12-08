@@ -11,8 +11,6 @@ def populate_stop_dict(line):
         name = stop["attributes"]["name"]
         stops_dict[name] = i
 
-    print(stops_dict)
-
     with open('stops.txt', 'a') as stops_file: 
         stops_file.write(json.dumps(stops_dict))
         stops_file.write('\n')
