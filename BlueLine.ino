@@ -27,14 +27,11 @@ void sendBits(String bits) {
       }
     }
   }
-
-  Serial.println(highByte);
-
   digitalWrite(latchPin, LOW);
-  shiftOut(dataPin, clockPin, HSBFIRST, highByte);
-  shiftOut(dataPin, clockPin, HSBFIRST, lowByte);
+  shiftOut(dataPin, clockPin, LSBFIRST, lowByte);
+  shiftOut(dataPin, clockPin, LSBFIRST, highByte);
+
   digitalWrite(latchPin, HIGH);
-  delay(1000);
 }
 
 void loop() {
