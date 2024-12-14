@@ -15,6 +15,8 @@ def populate_bits(line, stops, arduino):
     URL = "https://api-v3.mbta.com/vehicles?filter[route]=" + line + "&api_key=" + API_KEY
     vehicles = requests.get(url=URL).json()['data']
 
+    print(vehicles)
+
     out_bits = [0] * len(stops)
 
     for vehicle in vehicles:
@@ -38,13 +40,13 @@ if __name__ == "__main__":
 
     time.sleep(2)
 
-    lines = ["Blue", "Orange", "Red"]
+    lines = ["Blue"]
 
     if not os.path.exists('stops.txt'):
         stops.populate_stop_dict()
 
     while 1:
-        stop_dicts = open('stops.txt', 'r')
+        stop_dicts = open('blue.txt', 'r')
 
         for i, line in enumerate(stop_dicts):
             stop_dict = json.loads(line)
