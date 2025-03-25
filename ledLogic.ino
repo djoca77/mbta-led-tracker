@@ -1,17 +1,19 @@
 int latchPin1 = 8;
 int latchPin2 = 7;
 int latchPin3 = 6;
+int latchPin4 = 5; //this is a placeholder, change this
 
 int clockPin = 12;
 
 int bluePin = 11;
 int orangePin = 10;
 int redPin = 9;
+int greenPin = 13; //change this, this is a placeholder
 
 int blueStops = 12;
 int redStops = 22;
 int orangeStops = 20;
-int greenStops = 72;
+int greenStops = 70;
 
  void setup() {
   pinMode(latchPin1, OUTPUT);  //latch to control shift register pins for blue line
@@ -21,6 +23,7 @@ int greenStops = 72;
   pinMode(bluePin, OUTPUT);   //blue data
   pinMode(orangePin, OUTPUT); //orange data
   pinMode(redPin, OUTPUT);    //red data
+  pinMode(greenPin, OUTPUT);
 
   Serial.begin(9600);
 }
@@ -99,6 +102,29 @@ void sendRed(String bits) {
   digitalWrite(latchPin3, HIGH);
 }
 
+void sendGreen(String bits) {
+    byte bitstream = 0;
+
+//     for (int i = 0; i < greenStops; i++) {
+//         if (bits[i] == '1') {
+//             bitstream |= (1 << ((greenStops - 1) - i));
+//         }
+//     }
+//     digitalWrite(latchPin4, LOW);
+
+//     shiftOut(greenPin, clockPin, LSBFIRST, bitstream[]); //
+//     shiftOut(greenPin, clockPin, LSBFIRST, bitstream[]);
+//     shiftOut(greenPin, clockPin, LSBFIRST, bitstream[]);
+//     shiftOut(greenPin, clockPin, LSBFIRST, bitstream[]);
+//     shiftOut(greenPin, clockPin, LSBFIRST, bitstream[]);
+//     shiftOut(greenPin, clockPin, LSBFIRST, bitstream[]);
+//     shiftOut(greenPin, clockPin, LSBFIRST, bitstream[16:23]);
+//     shiftOut(greenPin, clockPin, LSBFIRST, bitstream[8:15]);
+//     shiftOut(greenPin, clockPin, LSBFIRST, bitstream[0:7]);
+
+//     digitalWrite(latchPin3, HIGH);
+// }
+
 void loop() {
   if (Serial.available() > 0) {
     String str = Serial.readString();
@@ -107,7 +133,9 @@ void loop() {
     } else if (str.substring(0,1) == "o") {
       sendOrange(str.substring(1));
     } else if (str.substring(0,1) == "r") {
-      sendRed(str.substring((1)));
+      sendRed(str.substring(1));
+    } else if (str.substring(0,1) == "g") {
+      sendGreen(str.substring(1));
     }
   }
 }
