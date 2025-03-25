@@ -14,8 +14,3 @@ def populate_stop_dict(line):
     with open('stops.txt', 'a') as stops_file: 
         stops_file.write(json.dumps(stops_dict))
         stops_file.write('\n')
-    
-if __name__=="__main__":
-    lines = ["Blue", "Orange", "Red"]
-    for line in lines:
-        populate_stop_dict(line)
