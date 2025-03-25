@@ -68,7 +68,7 @@ if __name__ == "__main__":
         print("Not a valid direction code, either input n for northbound or s for southbound trains")
         exit(1)
 
-    API_KEY = config.key
+    API_KEY = config.keyq
 
     lineFlag = {"Orange":"o", "Blue":"b", "Red":"r", "Green-B,Green-C,Green-D,Green-E":"g"}
     lines = ["Blue", "Orange", "Red", "Green-B,Green-C,Green-D,Green-E"]
